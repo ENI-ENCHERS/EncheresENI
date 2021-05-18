@@ -10,6 +10,7 @@
 
 <body>
     <%@ include file="/fragments/header.html"%>
+    <div class="container">
     <h2>Nouvelle vente</h2>
     <form method="post" action="creationvente">
         <fieldset>
@@ -62,6 +63,7 @@
 
         <br />
     </form>
+    </div>
     <%@ include file="/fragments/footer.html"%>
 </body>
 

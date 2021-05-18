@@ -8,6 +8,7 @@
 </head>
 <body class="d-flex flex-column h-100">
 <%@ include file="/fragments/header.html"%>
+<div class="container">
                 <h2 align="center">Mon profil</h2>
         <form action="<%=request.getContextPath() %>/modules/module4/ServletAjoutAvis"
 		method="POST">
@@ -87,7 +88,7 @@
                 <br />
             </fieldset>
         </form>
-        
+        </div>
 <%@ include file="/fragments/footer.html"%>
 </body>
 </html>

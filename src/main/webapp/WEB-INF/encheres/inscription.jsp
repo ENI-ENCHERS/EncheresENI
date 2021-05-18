@@ -8,6 +8,7 @@
 </head>
 <body>
 	<%@ include file="/fragments/header.html"%>
+	<div class="container">
 	<h2 align="center">Inscription</h2>
 	<form action="<%=request.getContextPath() %>/modules/module4/ServletAjoutAvis"
 		method="POST">
@@ -95,6 +96,7 @@
 			</div>
 		</fieldset>
 	</form>
+	</div>
 	<%@ include file="/fragments/footer.html"%>
 </body>
 </html>

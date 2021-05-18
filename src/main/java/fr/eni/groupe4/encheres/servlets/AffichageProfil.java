@@ -36,7 +36,6 @@ public class AffichageProfil extends HttpServlet {
      */
     public AffichageProfil() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 }

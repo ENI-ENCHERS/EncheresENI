@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,9 @@
 </head>
 <body>
 <%@ include file="/fragments/header.html"%>
+<div class="container">
 Contenu de la page d'affichage des resultats de la recherche.
+</div>
 <%@ include file="/fragments/footer.html"%>
 </body>
 </html>
