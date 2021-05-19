@@ -1,6 +1,9 @@
 package fr.eni.groupe4.encheres.servlets;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -30,7 +33,7 @@ public class AffichageRecherche extends HttpServlet {
 		}
     	request.setAttribute("listArticles", articleVendus);
     	
-        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+        this.getServletContext().getRequestDispatcher(VUE).forward( request, response );
 	}
     
     public AffichageRecherche() {
@@ -42,8 +45,39 @@ public class AffichageRecherche extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+//		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
+//		String nomParam = request.getParameter("nomArticle");
+//		String descParam =request.getParameter("description");	
+//		String dateDebutParam = request.getParameter("dateDebutEncheres");
+//		String dateFinParam = request.getParameter("dateFinEncheres");		
+//		String miseAPrixParam = request.getParameter("miseAPrix");		
+//		String prixVenteParam = request.getParameter("prixVente");		
+//		String numCategorieParam = request.getParameter("miseAPrix");
+//		String numUtilisateurParam = request.getParameter("prixVente");
+//				
+//		//conversion
+//		int miseAPrix = Integer.parseInt(miseAPrixParam);
+//		int prixVente = Integer.parseInt(prixVenteParam);
+//		int numCategorie = Integer.parseInt(numCategorieParam);
+//		int numUtilisateur = Integer.parseInt(numUtilisateurParam);
+//		Date dateDebut = null, dateFin = null;
+		
+//		try {
+//			dateDebut = sdf.parse(dateDebutParam);
+//		} catch (ParseException e1) {
+//			e1.printStackTrace();
+//		}
+		
+//		try {
+//			dateFin = sdf.parse(dateFinParam);
+//		} catch (ParseException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+		
+//		ArticleVendu articleVendu = new ArticleVendu();
+//		ArticleVendu ArticleVenduManager = new ArticleVenduManager().create(articleVendu);
+		this.getServletContext().getRequestDispatcher(VUE).forward( request, response );			
 	}
 
 }

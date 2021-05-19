@@ -14,8 +14,11 @@ import fr.eni.groupe4.encheres.bo.Utilisateur;
 
 public class EnchereDaoJdbcImpl implements EnchereDao{
 	
-	private UtilisateurDao utilisateurDao;
-	private ArticleVenduDao articleVenduDao;
+//	private UtilisateurDao utilisateurDao;
+//	private ArticleVenduDao articleVenduDao;
+	
+	UtilisateurDao utilisateurDao = new UtilisateurDaoJdbcImpl();
+	ArticleVenduDao articleVenduDao = new ArticleVenduDaoJdbcImpl();
 
 	@Override
 	public Enchere create(Enchere enchere) {
@@ -64,8 +67,8 @@ public class EnchereDaoJdbcImpl implements EnchereDao{
 				
 				Enchere enchere = new Enchere(dateEnchere, montantEnchere, utilisateur, articleVendu);
 				encheres.add(enchere);
-				cnx.close();
 			}
+			cnx.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -82,7 +85,7 @@ public class EnchereDaoJdbcImpl implements EnchereDao{
 	public void supprimer(int id) {
 		try {
 			Connection cnx = DAOUtil.getConnexion();
-		String requete = "delete from ENCHERES where id=?";
+		String requete = "delete from ENCHERES where no_enchere=?";
 		PreparedStatement pstmt = cnx.prepareStatement(requete);
 		pstmt.setInt(1, id);
 		pstmt.executeUpdate();

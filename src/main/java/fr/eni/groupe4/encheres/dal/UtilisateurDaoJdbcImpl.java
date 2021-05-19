@@ -80,10 +80,10 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 
 	@Override
 	public Utilisateur afficherParId(int id) {
-		Utilisateur util = new Utilisateur();
+		Utilisateur util = null;
 		try {
 			Connection cnx = DAOUtil.getConnexion();
-			String requete = "select * from UTILISATEURS where id=?";
+			String requete = "select * from UTILISATEURS where no_utilisateur=?";
 			PreparedStatement pstmt = cnx.prepareStatement(requete);
 
 			pstmt.setInt(1, id);
@@ -100,11 +100,11 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 				String codePostal = rs.getString("code_postal");
 				String ville = rs.getString("ville");
 				String motDePasse = rs.getString("mot_de_passe");
-				Integer credit = rs.getInt("mot_de_passe");
+				Integer credit = rs.getInt("credit");
 				Boolean administrateur = rs.getBoolean("administrateur");
-//				
-//				util = new Utilisateur(id, pseudo, nom, prenom, email, telephone, rue,
-//						codePostal, ville, motDePasse, credit, administrateur);	
+				
+				util = new Utilisateur(id, pseudo, nom, prenom, email, telephone, rue,
+						codePostal, ville, motDePasse, credit, administrateur);	
 				//System.out.println(util);
 				}
 			cnx.close();
@@ -127,7 +127,7 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 		Connection cnx;
 		try {
 			 cnx = DAOUtil.getConnexion();
-			String requete = "delete from UTILISATEURS where id=?";
+			String requete = "delete from UTILISATEURS where no_utilisateur=?";
 			PreparedStatement pstmt = cnx.prepareStatement(requete);
 
 			pstmt.setInt(1, id);

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class accueil
  */
 @WebServlet(urlPatterns = "/")
+//@WebServlet("/accueil")
 public class Accueil extends HttpServlet {
 	/**
 	 * 

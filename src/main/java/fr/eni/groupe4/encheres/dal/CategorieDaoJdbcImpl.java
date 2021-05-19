@@ -39,10 +39,10 @@ public class CategorieDaoJdbcImpl implements CategorieDao {
 
 	@Override
 	public Categorie afficherParId(int id) {
-		Categorie categorie = new Categorie();
+		Categorie categorie = null;
 		try {
 			Connection cnx = DAOUtil.getConnexion();
-			String requete = "select * from CATEGORIES where id=?";
+			String requete = "select * from CATEGORIES where no_categorie=?";
 			PreparedStatement pstmt = cnx.prepareStatement(requete);
 			
 			pstmt.setInt(1, id);
@@ -51,7 +51,7 @@ public class CategorieDaoJdbcImpl implements CategorieDao {
 			if (rs.next()) {
 				 id = rs.getInt("no_categorie");
 				 String libelle = rs.getString("libelle");
-				 //categorie = new Categorie(id, libelle);
+				 categorie = new Categorie(id, libelle);
 			}
 			cnx.close();
 				

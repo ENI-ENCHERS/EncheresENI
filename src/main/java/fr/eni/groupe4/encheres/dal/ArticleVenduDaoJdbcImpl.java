@@ -5,6 +5,8 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,10 +47,9 @@ public class ArticleVenduDaoJdbcImpl implements ArticleVenduDao {
 				Categorie categorie = categorieDao.afficherParId(categorieId);
 				 			
 				ArticleVendu articleVendu = new ArticleVendu(noArticle, nomArticle, description, dateDebutEncheres, dateFinEncheres, miseAPrix, prixVente, false, categorie, utilisateur);
-				listArticleVendus.add(articleVendu);
-				
-				cnx.close();
+				listArticleVendus.add(articleVendu);				
 			}
+			cnx.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -60,14 +61,14 @@ public class ArticleVenduDaoJdbcImpl implements ArticleVenduDao {
 		ArticleVendu article = null;
 		try {
 			Connection cnx = DAOUtil.getConnexion();
-			String requete = "select * from ARTICLES_VENDUS where id=?";
+			String requete = "select * from ARTICLES_VENDUS where no_article=?";
 			PreparedStatement pstmt = cnx.prepareStatement(requete);
 
 			pstmt.setInt(1, id);
 			ResultSet rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				id = rs.getInt("[no_article]");
+				id = rs.getInt("no_article");
 				String nomArticle = rs.getString("nom_article");
 				String description = rs.getString("description");
 				Date dateDebutEncheres = Date.valueOf(rs.getString("dateDebutEncheres"));
@@ -103,19 +104,29 @@ public class ArticleVenduDaoJdbcImpl implements ArticleVenduDao {
 	public ArticleVendu create(ArticleVendu articleVendu) {
 		try {
 			Connection cnx = DAOUtil.getConnexion();
+			
 			String requete = "INSERT INTO ARTICLES_VENDUS(nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie) VALUES(?,?,?,?,?,?,?,?)";
 			PreparedStatement pstmt = cnx.prepareStatement(requete, PreparedStatement.RETURN_GENERATED_KEYS);
+			
+			DateFormat dtf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 			pstmt.setString(1, articleVendu.getNomArticle());
 			pstmt.setString(2, articleVendu.getDescription());
-			//pstmt.setDate(3, java.sql.Date.valueOf(java.time.LocalDate.now()));
-			pstmt.setDate(3, new java.sql.Date(articleVendu.getDateDebutEncheres().getDate()));
-			pstmt.setDate(4, new java.sql.Date(articleVendu.getDateFinEncheres().getDate()));
+			//pstmt.setDate(3, Date.valueOf(articleVendu.getDateDebutEncheres()));
+//			pstmt.setDate(3, new java.sql.Date(articleVendu.getDateDebutEncheres().getDate()));
+			//pstmt.setDate(4, new java.sql.Date(articleVendu.getDateFinEncheres().getDate()));
+			//pstmt.setDate(4, Date.valueOf(articleVendu.getDateFinEncheres()));
+			String debut = dtf.format(articleVendu.getDateDebutEncheres());
+			pstmt.setDate(3, Date.valueOf(debut));
+			
+			String fin = dtf.format(articleVendu.getDateFinEncheres());
+			pstmt.setDate(4, Date.valueOf(fin));
+			
 			pstmt.setInt(5, articleVendu.getMiseAPrix());
 			pstmt.setInt(6, articleVendu.getPrixVente());
 			pstmt.setBoolean(7, false);
 			pstmt.setInt(8, articleVendu.getCategorie().getNoCategorie());
 			pstmt.setInt(9, articleVendu.getUtilisateur().getNoUtilisateur());
-						
+				
 			pstmt.executeUpdate();
 			ResultSet rs = pstmt.getGeneratedKeys();
 			if(rs.next()) {
@@ -132,7 +143,7 @@ public class ArticleVenduDaoJdbcImpl implements ArticleVenduDao {
 	public void supprimer(int id) {
 		try {
 			Connection cnx = DAOUtil.getConnexion();
-		String requete = "delete from ARTICLES_VENDUS where id=?";
+		String requete = "delete from ARTICLES_VENDUS where no_article=?";
 		PreparedStatement pstmt = cnx.prepareStatement(requete);
 		pstmt.setInt(1, id);
 		pstmt.executeUpdate();
@@ -140,8 +151,43 @@ public class ArticleVenduDaoJdbcImpl implements ArticleVenduDao {
 		cnx.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-	
+		}	
 	}
 
+	@Override
+	public ArticleVendu afficherParNom(String nomArticle) {
+		ArticleVendu article = null;
+		try {
+		Connection cnx = DAOUtil.getConnexion();
+		String requete = "select * from ARTICLES_VENDUS where nom_article=?";
+		PreparedStatement pstmt = cnx.prepareStatement(requete);
+		
+		pstmt.setString(1, nomArticle);
+		ResultSet rs = pstmt.executeQuery();
+		
+		if (rs.next()) {
+			Integer idArticle = rs.getInt("no_article");
+			nomArticle = rs.getString("nom_article");
+			String description = rs.getString("description");
+			Date dateDebutEncheres = Date.valueOf(rs.getString("dateDebutEncheres"));
+			Date dateFinEncheres = Date.valueOf(rs.getString("dateFinEncheres"));
+			Integer miseAPrix = rs.getInt("miseAPrix");
+			Integer prixVente = rs.getInt("prixVente");
+			Boolean etatVente = rs.getBoolean("etatVente");
+			
+			Integer categorieId = rs.getInt("categorie");
+			Categorie categorie = categorieDao.afficherParId(categorieId);
+			 
+			Integer utilisateurId = rs.getInt("no_utilisateur");
+			Utilisateur utilisateur = utilisateurDao.afficherParId(utilisateurId);
+			
+			article = new ArticleVendu(idArticle, nomArticle, description, dateDebutEncheres, dateFinEncheres, miseAPrix, prixVente, etatVente, categorie, utilisateur);			 
+		}
+		cnx.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return article;
+	}
+	
 }

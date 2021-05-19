@@ -35,4 +35,8 @@ public class ArticleVenduManager {
 	public void delete(int id) {
 		articleVenduDao.supprimer(id);
 	}
+	
+	public ArticleVendu selectByNom(String nomArticle) {
+		return articleVenduDao.afficherParNom(nomArticle);
+	}
 }

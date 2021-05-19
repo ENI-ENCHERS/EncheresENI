@@ -121,6 +121,4 @@ public class ArticleVendu {
 				+ ", utilisateur=" + utilisateur + "]";
 	}
 
-	
-
 }

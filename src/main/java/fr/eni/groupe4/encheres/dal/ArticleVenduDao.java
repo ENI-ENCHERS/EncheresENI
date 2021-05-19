@@ -16,4 +16,6 @@ public interface ArticleVenduDao {
 
 	void supprimer(int id);
 
+	ArticleVendu afficherParNom(String nomArticle);
+
 }
