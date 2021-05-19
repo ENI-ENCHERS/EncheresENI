@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<<<<<<< HEAD
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+=======
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+>>>>>>> branch 'develop' of https://github.com/ENI-ENCHERS/EncheresENI.git
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +14,9 @@
 </head>
 <body>
 <%@ include file="/fragments/header.html"%>
+<div class="container">
 Contenu de la page d'affichage des resultats de la recherche.
+<<<<<<< HEAD
 
 	<form action='${pageContext.request.contextPath}/AffichageRecherche' method="post">
 		<div>
@@ -57,6 +63,9 @@ Contenu de la page d'affichage des resultats de la recherche.
 	
 	</form>
 
+=======
+</div>
+>>>>>>> branch 'develop' of https://github.com/ENI-ENCHERS/EncheresENI.git
 <%@ include file="/fragments/footer.html"%>
 </body>
 </html>

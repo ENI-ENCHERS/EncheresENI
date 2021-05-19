@@ -38,46 +38,47 @@ public class AffichageRecherche extends HttpServlet {
     
     public AffichageRecherche() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
-//		String nomParam = request.getParameter("nomArticle");
-//		String descParam =request.getParameter("description");	
-//		String dateDebutParam = request.getParameter("dateDebutEncheres");
-//		String dateFinParam = request.getParameter("dateFinEncheres");		
-//		String miseAPrixParam = request.getParameter("miseAPrix");		
-//		String prixVenteParam = request.getParameter("prixVente");		
-//		String numCategorieParam = request.getParameter("miseAPrix");
-//		String numUtilisateurParam = request.getParameter("prixVente");
-//				
-//		//conversion
-//		int miseAPrix = Integer.parseInt(miseAPrixParam);
-//		int prixVente = Integer.parseInt(prixVenteParam);
-//		int numCategorie = Integer.parseInt(numCategorieParam);
-//		int numUtilisateur = Integer.parseInt(numUtilisateurParam);
-//		Date dateDebut = null, dateFin = null;
+
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
+		String nomParam = request.getParameter("nomArticle");
+		String descParam =request.getParameter("description");	
+		String dateDebutParam = request.getParameter("dateDebutEncheres");
+		String dateFinParam = request.getParameter("dateFinEncheres");		
+		String miseAPrixParam = request.getParameter("miseAPrix");		
+		String prixVenteParam = request.getParameter("prixVente");		
+		String numCategorieParam = request.getParameter("miseAPrix");
+		String numUtilisateurParam = request.getParameter("prixVente");
+				
+		//conversion
+		int miseAPrix = Integer.parseInt(miseAPrixParam);
+		int prixVente = Integer.parseInt(prixVenteParam);
+		int numCategorie = Integer.parseInt(numCategorieParam);
+		int numUtilisateur = Integer.parseInt(numUtilisateurParam);
+		Date dateDebut = null, dateFin = null;
 		
-//		try {
-//			dateDebut = sdf.parse(dateDebutParam);
-//		} catch (ParseException e1) {
-//			e1.printStackTrace();
-//		}
+		try {
+			dateDebut = sdf.parse(dateDebutParam);
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
 		
-//		try {
-//			dateFin = sdf.parse(dateFinParam);
-//		} catch (ParseException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
+		try {
+			dateFin = sdf.parse(dateFinParam);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
-//		ArticleVendu articleVendu = new ArticleVendu();
-//		ArticleVendu ArticleVenduManager = new ArticleVenduManager().create(articleVendu);
+		ArticleVendu articleVendu = new ArticleVendu();
+		ArticleVendu ArticleVenduManager = new ArticleVenduManager().create(articleVendu);
 		this.getServletContext().getRequestDispatcher(VUE).forward( request, response );			
+
 	}
 
 }

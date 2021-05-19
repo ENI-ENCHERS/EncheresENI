@@ -32,7 +32,6 @@ public class AffichageDetailVente extends HttpServlet {
 
 	public AffichageDetailVente() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 }

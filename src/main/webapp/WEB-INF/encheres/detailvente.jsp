@@ -8,8 +8,10 @@
 </head>
 <body>
 	<%@ include file="/fragments/header.html"%>
+	<div class="container">
 	<h2>Detail vente</h2>
 	Affichage du detail de la vente
+	</div>
 	<%@ include file="/fragments/footer.html"%>
 </body>
 </html>

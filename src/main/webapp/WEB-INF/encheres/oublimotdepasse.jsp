@@ -8,6 +8,9 @@
 </head>
 <body>
 <%@ include file="/fragments/header.html"%>
+<div class="container">
+
+</div>
 
 <%@ include file="/fragments/footer.html"%>
 </body>

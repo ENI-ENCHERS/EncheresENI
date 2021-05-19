@@ -8,7 +8,9 @@
 </head>
 <body>
 <%@ include file="/fragments/header.html"%>
-Contenu de la page d'affichage d'un profil utilisateur
+<div class="container">
+Contenu de la page d'affichage d'un profil utilisateur.
+</div>
 <%@ include file="/fragments/footer.html"%>
 </body>
 </html>

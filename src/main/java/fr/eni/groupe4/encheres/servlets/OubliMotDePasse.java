@@ -26,7 +26,6 @@ public class OubliMotDePasse extends HttpServlet {
 	 */
 	public OubliMotDePasse() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 }

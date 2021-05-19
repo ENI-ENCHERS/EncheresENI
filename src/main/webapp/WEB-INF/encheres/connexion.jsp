@@ -8,6 +8,7 @@
 </head>
 <body class="d-flex flex-column h-100">
 	<%@ include file="/fragments/header.html"%>
+	<div class="container">
 				<h2>Connexion</h2>
 	<form method="post" action="connexion">
 		<fieldset>
@@ -47,6 +48,7 @@
 		</fieldset>
 	</form>
 	<button class="btn btn-light lg" type="submit" value="creer un compte">Creer un compte</button>
+	</div>
 	<%@ include file="/fragments/footer.html"%>
 </body>
 </html>
