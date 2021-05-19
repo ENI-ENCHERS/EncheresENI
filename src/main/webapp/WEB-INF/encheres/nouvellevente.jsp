@@ -4,14 +4,14 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <title>Nouvelle Vente</title>
 </head>
 
 <body>
     <%@ include file="/fragments/header.html"%>
     <div class="container">
-    <h2>Nouvelle vente</h2>
+    <h1>Nouvelle vente</h1>
     <form method="post" action="creationvente">
         <fieldset>
             <label for="article">Article : </label>

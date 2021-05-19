@@ -3,13 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <title>S'inscrire</title>
 </head>
 <body>
 	<%@ include file="/fragments/header.html"%>
 	<div class="container">
-	<h2 align="center">Inscription</h2>
+	<h1 align="center">Inscription</h1>
 	<form action="<%=request.getContextPath() %>/modules/module4/ServletAjoutAvis"
 		method="POST">
 		<fieldset>

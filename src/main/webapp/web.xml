@@ -16,7 +16,7 @@
 	
 <!-- SERVLETS -->
 
-	<!-- Afficher l'accueil -->
+	Afficher l'accueil
 	<servlet>
 		<servlet-name>Accueil</servlet-name>
 		<servlet-class>fr.eni.groupe4.encheres.servlets.Accueil</servlet-class>

@@ -10,8 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class accueil
  */
-@WebServlet(urlPatterns = "/")
-//@WebServlet("/accueil")
+@WebServlet(description = "Gere la page d'accueil", urlPatterns = "/")
 public class Accueil extends HttpServlet {
 	/**
 	 * 

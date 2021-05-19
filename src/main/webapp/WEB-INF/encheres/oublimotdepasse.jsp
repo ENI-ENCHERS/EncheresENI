@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <title>Mot de passe oublie</title>
 </head>
 <body>

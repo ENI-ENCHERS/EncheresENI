@@ -3,13 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <title>Modifier le profil</title>
 </head>
 <body class="d-flex flex-column h-100">
 <%@ include file="/fragments/header.html"%>
 <div class="container">
-                <h2 align="center">Mon profil</h2>
+                <h1 align="center">Mon profil</h1>
         <form action="<%=request.getContextPath() %>/modules/module4/ServletAjoutAvis"
 		method="POST">
             <fieldset>

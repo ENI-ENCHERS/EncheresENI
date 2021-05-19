@@ -3,13 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <title>Se connecter</title>
 </head>
 <body class="d-flex flex-column h-100">
 	<%@ include file="/fragments/header.html"%>
 	<div class="container">
-				<h2>Connexion</h2>
+				<h1>Connexion</h1>
 	<form method="post" action="connexion">
 		<fieldset>
 			<p>Vous pouvez vous connecter via ce formulaire.</p>
