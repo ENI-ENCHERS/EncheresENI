@@ -108,24 +108,27 @@ public class ArticleVenduDaoJdbcImpl implements ArticleVenduDao {
 			String requete = "INSERT INTO ARTICLES_VENDUS(nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie) VALUES(?,?,?,?,?,?,?,?)";
 			PreparedStatement pstmt = cnx.prepareStatement(requete, PreparedStatement.RETURN_GENERATED_KEYS);
 			
-			DateFormat dtf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+//			DateFormat dtf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 			pstmt.setString(1, articleVendu.getNomArticle());
 			pstmt.setString(2, articleVendu.getDescription());
-			//pstmt.setDate(3, Date.valueOf(articleVendu.getDateDebutEncheres()));
-//			pstmt.setDate(3, new java.sql.Date(articleVendu.getDateDebutEncheres().getDate()));
-			//pstmt.setDate(4, new java.sql.Date(articleVendu.getDateFinEncheres().getDate()));
-			//pstmt.setDate(4, Date.valueOf(articleVendu.getDateFinEncheres()));
-			String debut = dtf.format(articleVendu.getDateDebutEncheres());
-			pstmt.setDate(3, Date.valueOf(debut));
+			pstmt.setDate(3, new Date(articleVendu.getDateDebutEncheres().getTime()));
+			pstmt.setDate(4, new Date(articleVendu.getDateFinEncheres().getTime()));
 			
-			String fin = dtf.format(articleVendu.getDateFinEncheres());
-			pstmt.setDate(4, Date.valueOf(fin));
+//			pstmt.setDate(3, Date.valueOf(articleVendu.getDateDebutEncheres()));
+//			pstmt.setDate(3, new java.sql.Date(articleVendu.getDateDebutEncheres().getDate()));
+//			pstmt.setDate(4, new java.sql.Date(articleVendu.getDateFinEncheres().getDate()));
+			//pstmt.setDate(4, Date.valueOf(articleVendu.getDateFinEncheres()));
+//			String debut = dtf.format(articleVendu.getDateDebutEncheres());
+//			pstmt.setDate(3, Date.valueOf(debut));
+//			
+//			String fin = dtf.format(articleVendu.getDateFinEncheres());
+//			pstmt.setDate(4, Date.valueOf(fin));
 			
 			pstmt.setInt(5, articleVendu.getMiseAPrix());
 			pstmt.setInt(6, articleVendu.getPrixVente());
-			pstmt.setBoolean(7, false);
+			System.out.println("######" +articleVendu.getUtilisateur().getNoUtilisateur());
+			pstmt.setInt(7, articleVendu.getUtilisateur().getNoUtilisateur());
 			pstmt.setInt(8, articleVendu.getCategorie().getNoCategorie());
-			pstmt.setInt(9, articleVendu.getUtilisateur().getNoUtilisateur());
 				
 			pstmt.executeUpdate();
 			ResultSet rs = pstmt.getGeneratedKeys();

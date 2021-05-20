@@ -10,5 +10,5 @@ public interface CategorieDao {
 
 	Categorie afficherParId(int id);
 
-	void create(Categorie cat);
+	Categorie create(Categorie cat);
 }

@@ -22,14 +22,14 @@ public class CategorieDaoJdbcImpl implements CategorieDao {
 			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				Integer categorieId = rs.getInt("categorie");
+				Integer categorieId = rs.getInt("no_categorie");
 				String libelle = rs.getString("libelle");
 				Categorie categorie = new Categorie(categorieId, libelle);
 				
 				categories.add(categorie);
 				
-				cnx.close();
 			}
+			cnx.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -62,7 +62,7 @@ public class CategorieDaoJdbcImpl implements CategorieDao {
 	}
 
 	@Override
-	public void create(Categorie cat) {
+	public Categorie create(Categorie cat) {
 		try {
 			Connection cnx = DAOUtil.getConnexion();
 			String requete = "INSERT INTO CATEGORIES(libelle) VALUES(?)";
@@ -70,7 +70,7 @@ public class CategorieDaoJdbcImpl implements CategorieDao {
 			pstmt.setString(1, cat.getLibelle());
 			
 			pstmt.executeUpdate();
-			ResultSet rs = pstmt.getGeneratedKeys();
+			ResultSet rs = pstmt.getGeneratedKeys();			
 			if(rs.next()) {
 				cat.setNoCategorie(rs.getInt(1));
 			}		
@@ -78,7 +78,7 @@ public class CategorieDaoJdbcImpl implements CategorieDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+		return cat;	
 	}
 
 }

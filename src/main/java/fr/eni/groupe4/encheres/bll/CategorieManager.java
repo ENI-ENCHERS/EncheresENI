@@ -21,4 +21,9 @@ public class CategorieManager {
 	public Categorie selectById(int id) {
 		return categorieDao.afficherParId(id);
 	}
+	
+	public Categorie create(Categorie cat) {
+		return categorieDao.create(cat);
+		
+	}
 }

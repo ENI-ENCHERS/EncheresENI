@@ -1,6 +1,6 @@
 package fr.eni.groupe4.encheres.bo;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class ArticleVendu {
 	private int noArticle;
