@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
 <head>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <title>Nouvelle Vente</title>
 </head>
 
@@ -21,13 +22,10 @@
             <input type="text" class="form-control" id="description" name="description" value="" size="20" maxlength="20" />
 
             <label for="categorie">Categorie : </label>
-            <select class="form-select form-select-sm"
-						aria-label=".form-select-sm example">
-						<option selected>Toutes</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="3">4</option>
+            <select class="form-select form-select-sm" class="form-control">
+						<c:forEach var="Categorie" items="${List}" varStatus="iter">
+<option value="${Categorie.categorieId}">${Categorie.libelle}</option>
+</c:forEach>
 					</select>
             <label for="photoarticle">Photo de l'article : </label>
             <input type="file" class="form-control" id="photoarticle" name="photoarticle" accept="image/png, image/jpeg" />
@@ -50,11 +48,11 @@
 
             <label for="codepostal">Code Postal : </label>
             <input type="text" class="form-control" id="codepostal" name="codepostal" value="" size="20" maxlength="20" />
-            <br />
+            <br/>
 
             <label for="motdepasse">Ville : </label>
             <input type="text" class="form-control" id="motdepasse" name="motdepasse" value="" size="20" maxlength="20" />
-            <br />
+            <br/>
         </fieldset>
 
         <button class="btn btn-primary" type="submit" value="Enregistrer">Enregistrer</button>

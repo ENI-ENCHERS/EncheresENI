@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 <title>Accueil</title>
 </head>
 
@@ -26,45 +26,41 @@
 					<strong>Categories :</strong>
 				</div>
 				<div class="col-md-10">
-					<select class="form-select form-select-sm"
-						aria-label=".form-select-sm example">
-						<option selected>Toutes</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="3">4</option>
+					<select class="form-select form-select-sm" aria-label=".form-select-sm example">
+<c:forEach var="Categorie" items="${List}" varStatus="iter">
+<option value="${Categorie.categorieId}">${Categorie.libelle}</option>
+</c:forEach>
 					</select>
 				</div>
 			</div>
 		</div>
 		
-	 <form action='${pageContext.request.contextPath}/AffichageRecherche' method="get">	 
+<!--  <form action='${pageContext.request.contextPath}/AffichageRecherche' method="get">	 -->
 		<div class="col-4 align-self-center">
-			<button class="btn btn-primary btn-lg ">Rechercher</button>
-		</div>		
-	 </form> 
 			<button class="btn btn-primary btn-lg ">
 			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
 </svg> 
 Rechercher
 </button>
+		</div>		
+			
 		</div>
-	</div>
+
 	<hr>
 <c:choose>
 <c:when test="${ArticleVenduDao.size()>0}">
-<!-- Cas où il y a des articles en vente -->
-<c:forEach items="${ArticleVenduDao}">
+<c:forEach items="${ArticleVendu}">
 <div class="card">
+				<div class="col-sm-6">
 				<div class="card-body">
 					<div class="row">
 						<div class="col-md-3">Photo de l'article</div>
 						<div class="col">
-							<h5 class="card-title">PC Gamer pour travailler</h5>
+							<h5 class="card-title"><a href="<c:url value='DetailVente'/>">${ArticleVendu.nomArticle}</a></h5>
 							<p class="card-text">
-								Prix : 210 points<br />Fin de l'enchere: 10/08/2018<br />
-								<strong>Vendeur :</strong> 
+								Prix:${ArticleVendu.prixVente}<br />Fin de l'enchere: ${ArticleVendu.dateFinEncheres}<br />
+								<strong>Vendeur :</strong> <a href="<c:url value='profil'/>">${ArticleVendu.utilisateur}</a>
 								<a href="${pageContext.request.contextPath}/listes?supprimer=${c.id}" class="badge text-danger" title="Supprimer">
 								
 								</a>
@@ -72,45 +68,16 @@ Rechercher
 						</div>
 					</div>
 				</div>
+				</div>
 			</div>
 </c:forEach>
 </c:when>
 <c:otherwise>
-<!-- Cas où il n'y a aucun article en vente -->
 <p>Il n'y a aucun objet en vente actuellement.</p>
 </c:otherwise>
 </c:choose>
 
-<!--	<div class="row">
-		<div class="col-sm-6">
-			<div class="card">
-				<div class="card-body">
-					<div class="row">
-						<div class="col-md-3">Photo de l'article</div>
-						<div class="col">
-							<h5 class="card-title">PC Gamer pour travailler</h5>
-							<p class="card-text">
-								Prix : 210 points<br />Fin de l'enchere: 10/08/2018<br />
-								<strong>Vendeur :</strong> Jojo
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-sm-6">
-			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title">2eme article</h5>
-					<p class="card-text">
-						Prix : <br />Fin de l'enchere: <br />
-						<strong>Vendeur :</strong>
-					</p>
-				</div>
-			</div>
-		</div>
-	</div> 
-</div> -->
+</div>
 	<%@ include file="/fragments/footer.html"%>
 </body>
 
