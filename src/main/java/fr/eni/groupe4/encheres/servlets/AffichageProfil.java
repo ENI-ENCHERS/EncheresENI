@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.groupe4.encheres.bll.UtilisateurManager;
 import fr.eni.groupe4.encheres.bo.Utilisateur;
+import fr.eni.groupe4.encheres.dal.UtilisateurDaoJdbcImpl;
 
 /**
  * Servlet implementation class AffichageProfil
@@ -36,6 +37,31 @@ public class AffichageProfil extends HttpServlet {
      */
     public AffichageProfil() {
         super();
+    }
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	
+    	Utilisateur util = new Utilisateur();
+    	util.setPseudo(request.getParameter("pseudo"));
+    	String name = request.getParameter("nom");
+    	System.out.println("nom: "+name);
+		util.setNom(request.getParameter("nom"));
+		util.setPrenom(request.getParameter("prenom"));
+		util.setEmail(request.getParameter("email"));
+		util.setTelephone(request.getParameter("telephone"));
+		util.setRue(request.getParameter("rue"));
+		util.setCodePostal(request.getParameter("codePostal"));
+		util.setVille(request.getParameter("ville"));
+		util.setMotDePasse(request.getParameter("motDePasse"));
+		String credit = request.getParameter("credit");
+		int cred = Integer.valueOf(credit);
+		util.setCredit(cred);
+//		boolean isAdministrateur = Boolean.parseBoolean(request.getParameter("isAdministrateur")); 
+//		System.out.println("administrateur " +isAdministrateur);
+		util.isAdministrateur();
+    	new UtilisateurDaoJdbcImpl().create(util);
+    	this.getServletContext().getRequestDispatcher(VUE).forward( request, response );
     }
 
 }
