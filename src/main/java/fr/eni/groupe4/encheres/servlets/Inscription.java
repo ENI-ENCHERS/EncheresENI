@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class GestionInscription
  */
 @WebServlet(description = "Gere la page d'inscription", urlPatterns = { "/GestionInscription" })
-public class FormulaireInscription extends HttpServlet {
+public class Inscription extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public static final String VUE = "/WEB-INF/encheres/inscription.jsp";
