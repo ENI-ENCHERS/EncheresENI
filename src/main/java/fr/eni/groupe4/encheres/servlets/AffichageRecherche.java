@@ -92,26 +92,6 @@ public class AffichageRecherche extends HttpServlet {
 		Utilisateur utilisateur = new UtilisateurDaoJdbcImpl().afficherParId(util);
 		articleVendu.setUtilisateur(utilisateur);
 		articleVendu.getUtilisateur().setNoUtilisateur(Integer.parseInt(request.getParameter("noUtilisateur")));
-
-		//conversion
-//		int miseAPrix = Integer.parseInt(miseAPrixParam);
-//		int prixVente = Integer.parseInt(prixVenteParam);
-//		int numCategorie = Integer.parseInt(numCategorieParam);
-//		int numUtilisateur = Integer.parseInt(numUtilisateurParam);
-//		Date dateDebut = null, dateFin = null;
-//		
-//		try {
-//			dateDebut = sdf.parse(dateDebutParam);
-//		} catch (ParseException e1) {
-//			e1.printStackTrace();
-//		}
-//		
-//		try {
-//			dateFin = sdf.parse(dateFinParam);
-//		} catch (ParseException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
 				
 		ArticleVendu ArticleVenduManager = new ArticleVenduManager().create(articleVendu);
 	
