@@ -34,7 +34,7 @@ public class GestionCookie extends HttpServlet {
 		cookie.setHttpOnly(true);
 		response.addCookie(cookie);
 	}
-
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

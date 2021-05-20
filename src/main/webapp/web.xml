@@ -43,7 +43,7 @@
 	<!-- Afficher la page d'inscription -->
 	<servlet>
 		<servlet-name>Inscription</servlet-name>
-		<servlet-class>fr.eni.groupe4.encheres.servlets.GestionInscription</servlet-class>
+		<servlet-class>fr.eni.groupe4.encheres.servlets.FormulaireInscription</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>

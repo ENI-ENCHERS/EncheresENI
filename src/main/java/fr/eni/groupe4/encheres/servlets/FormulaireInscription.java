@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class GestionInscription
  */
 @WebServlet(description = "Gere la page d'inscription", urlPatterns = { "/GestionInscription" })
-public class GestionInscription extends HttpServlet {
+public class FormulaireInscription extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public static final String VUE = "/WEB-INF/encheres/inscription.jsp";
@@ -19,6 +19,10 @@ public class GestionInscription extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		/* On affiche la page d'inscription */
 		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
+	}
+	
+	public void doPost() {
+		
 	}
 
 }
