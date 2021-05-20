@@ -26,10 +26,11 @@ import fr.eni.groupe4.encheres.dal.UtilisateurDaoJdbcImpl;
 public class AffichageRecherche extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
+	/* On affiche la page recherche */
     public static final String VUE = "/WEB-INF/encheres/recherche.jsp";
 	
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
-        /* On affiche la page recherche */
+        
     	List<ArticleVendu> articleVendus = new ArticleVenduManager().selectAll();
     	for (ArticleVendu articleVendu : articleVendus) {
 			   //System.out.println("mes articles "+articleVendu.getNoArticle());

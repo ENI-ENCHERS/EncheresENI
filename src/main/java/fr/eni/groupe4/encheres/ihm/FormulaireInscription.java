@@ -68,7 +68,7 @@ public final class FormulaireInscription {
         utilisateur.setNom( nom );
 
         if ( erreurs.isEmpty() ) {
-            resultat = "Succès de l'inscription.";
+            resultat = "Succès de l'inscription !";
         } else {
             resultat = "Échec de l'inscription.";
         }
