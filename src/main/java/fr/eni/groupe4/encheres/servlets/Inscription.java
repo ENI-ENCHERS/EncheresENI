@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.eni.groupe4.encheres.ihm.FormulaireInscription;
+import fr.eni.groupe4.encheres.bll.FormulaireInscription;
 import fr.eni.groupe4.encheres.bo.Utilisateur;
 
 /**

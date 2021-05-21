@@ -84,7 +84,6 @@
 						<c:when test="${listArticles.size()>0}">
 						<div class="row row-cols-1 row-cols-md-3">
 							<c:forEach items="${ listArticles }" var="a">
-							
 								<div class="card">
 									<div class="col-mb-12">
 										<div class="card-body">
@@ -93,8 +92,8 @@
 												<div class="col">
 													<h5 class="card-title"><a href="<c:url value='AffichageDetailVente'/>"><c:out value="${ a.nomArticle}" /></a></h5>
 													<p class="card-text">Prix : <c:out value="${ a.prixVente}" />
-														<br />Fin de l'enchere: ${ArticleVendu.dateFinEncheres}<c:out value="${ a.dateFinEncheres}" />
-														<br />	<strong>Vendeur :</strong>  <a href="<c:url value='profil'/>"><c:out value="${a.utilisateur}"/></a>
+														<br />Fin de l'enchere: ${ArticleVendu.dateFinEncheres}<c:out value="${a.dateFinEncheres}" />
+														<br />	<strong>Vendeur :</strong>  <a href="<c:url value='AffichageProfil'/>"><c:out value="${a.utilisateur}"/></a>
 														<a href="${pageContext.request.contextPath}/listes?supprimer=${c.id}" class="badge text-danger" title="Supprimer"></a>
 													</p>
 												</div>
