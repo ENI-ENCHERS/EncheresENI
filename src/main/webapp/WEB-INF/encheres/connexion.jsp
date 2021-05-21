@@ -9,7 +9,7 @@
 	<%@ include file="/fragments/header.html"%>
 	<div class="container">
 				<h1>Connexion</h1>
-	<form method="post" action="connexion">
+	<form action="GestionConnexion" method="post">
 		<fieldset>
 			<p>Vous pouvez vous connecter via ce formulaire.</p>
 
@@ -18,7 +18,7 @@
 			<label for="pseudo">Identifiant : </label>
 			</div>
 			<div class="col"> 
-			<input type="text" class="form-control" id="pseudo" name="pseudo" value="" size="20" maxlength="20" />
+			<input type="text" class="form-control" id="pseudo" name="pseudo" required value="${ param.pseudo }" size="20" maxlength="50" />
 			</div>
 			</div> 
 				<br/>
@@ -27,8 +27,9 @@
 			<label for="motdepasse">Mot de passe : </label>
 			</div> 
 			<div class="col">
-			<input type="password" class="form-control" id="motdepasse" name="motdepasse" value="" size="20" maxlength="20" />
+			<input type="password" class="form-control" id="motdepasse" name="mdp" value="${ param.mdp}" size="20" maxlength="20" />
 			</div>
+			${ message }
 			</div> 
 				<br/> 
 				<div class="row">

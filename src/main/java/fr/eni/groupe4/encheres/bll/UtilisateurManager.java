@@ -34,5 +34,7 @@ public class UtilisateurManager {
 		utilisateurDao.supprimer(id);
 	}
 	 
-
+	public Utilisateur recupererParEmailEtMdp(String identifiant, String mdp) {
+		return utilisateurDao.recupererParEmailEtMdp(identifiant, mdp);
+	}
 }

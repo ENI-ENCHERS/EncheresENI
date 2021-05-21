@@ -15,4 +15,6 @@ public interface UtilisateurDao {
 	Utilisateur update(Utilisateur utilisateur);
 
 	void supprimer(int id);
+
+	Utilisateur recupererParEmailEtMdp(String identifiant, String mdp);
 }

@@ -39,6 +39,11 @@ public class Utilisateur {
 		this.noUtilisateur = noUtilisateur;
 	}
 
+	public Utilisateur(String pseudo, String motDePasse) {
+		this.pseudo = pseudo;
+		this.motDePasse = motDePasse;		
+	}
+
 	public int getNoUtilisateur() {
 		return noUtilisateur;
 	}

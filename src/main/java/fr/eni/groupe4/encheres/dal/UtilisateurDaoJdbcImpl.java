@@ -138,4 +138,36 @@ public class UtilisateurDaoJdbcImpl implements UtilisateurDao {
 		}
 	}
 
+	public Utilisateur recupererParEmailEtMdp(String identifiant, String mdp) {
+		Utilisateur util = new Utilisateur();
+		try {
+		Connection cnx = DAOUtil.getConnexion();
+		String requete = "select * from UTILISATEURS where pseudo=? AND mot_de_passe=?";
+		PreparedStatement pstmt = cnx.prepareStatement(requete);
+
+		pstmt.setString(1, identifiant);
+		pstmt.setString(2, mdp);
+		
+		ResultSet rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			util.setNoUtilisateur(rs.getInt("no_utilisateur"));
+			util.setPseudo(rs.getString("pseudo"));
+			util.setNom(rs.getString("nom"));
+			util.setPrenom(rs.getString("prenom"));
+			util.setEmail(rs.getString("email"));	
+			util.setTelephone(rs.getString("telephone"));
+			util.setRue(rs.getString("rue"));
+			util.setTelephone(rs.getString("code_postal"));
+			util.setVille(rs.getString("ville"));
+			util.setMotDePasse(rs.getString("mot_de_passe"));
+			util.setCredit(rs.getInt("credit"));
+			util.setAdministrateur(rs.getBoolean("administrateur"));			
+		}
+		cnx.close();
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+		return util;
+	}
 }

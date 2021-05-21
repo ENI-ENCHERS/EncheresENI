@@ -18,9 +18,6 @@ public class ArticleVenduDaoJdbcImpl implements ArticleVenduDao {
 	UtilisateurDao utilisateurDao = new UtilisateurDaoJdbcImpl();
 	CategorieDao categorieDao = new CategorieDaoJdbcImpl();
 
-//	private UtilisateurDao utilisateurDao;
-	//private CategorieDao categorieDao;
-
 	@Override
 	public List<ArticleVendu> afficher() {
 		List<ArticleVendu> listArticleVendus = new ArrayList<>();
@@ -71,19 +68,19 @@ public class ArticleVenduDaoJdbcImpl implements ArticleVenduDao {
 				id = rs.getInt("no_article");
 				String nomArticle = rs.getString("nom_article");
 				String description = rs.getString("description");
-				Date dateDebutEncheres = Date.valueOf(rs.getString("dateDebutEncheres"));
-				Date dateFinEncheres = Date.valueOf(rs.getString("dateFinEncheres"));
-				Integer miseAPrix = rs.getInt("miseAPrix");
-				Integer prixVente = rs.getInt("prixVente");
-				Boolean etatVente = rs.getBoolean("etatVente");
+				Date dateDebutEncheres = Date.valueOf(rs.getString("date_debut_encheres"));
+				Date dateFinEncheres = Date.valueOf(rs.getString("date_fin_encheres"));
+				Integer miseAPrix = rs.getInt("prix_initial");
+				Integer prixVente = rs.getInt("prix_vente");
+				//Boolean etatVente = rs.getBoolean("etatVente");
 				
-				Integer categorieId = rs.getInt("categorie");
-				Categorie categorie = categorieDao.afficherParId(categorieId);
-				 
 				Integer utilisateurId = rs.getInt("no_utilisateur");
 				Utilisateur utilisateur = utilisateurDao.afficherParId(utilisateurId);
 				
-				article = new ArticleVendu(id, nomArticle, description, dateDebutEncheres, dateFinEncheres, miseAPrix, prixVente, etatVente, categorie, utilisateur);
+				Integer categorieId = rs.getInt("no_categorie");
+				Categorie categorie = categorieDao.afficherParId(categorieId);
+				 				
+				article = new ArticleVendu(id, nomArticle, description, dateDebutEncheres, dateFinEncheres, miseAPrix, prixVente, false, categorie, utilisateur);
 							}
 			cnx.close();
 
@@ -108,22 +105,10 @@ public class ArticleVenduDaoJdbcImpl implements ArticleVenduDao {
 			String requete = "INSERT INTO ARTICLES_VENDUS(nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie) VALUES(?,?,?,?,?,?,?,?)";
 			PreparedStatement pstmt = cnx.prepareStatement(requete, PreparedStatement.RETURN_GENERATED_KEYS);
 			
-//			DateFormat dtf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 			pstmt.setString(1, articleVendu.getNomArticle());
 			pstmt.setString(2, articleVendu.getDescription());
 			pstmt.setDate(3, new Date(articleVendu.getDateDebutEncheres().getTime()));
 			pstmt.setDate(4, new Date(articleVendu.getDateFinEncheres().getTime()));
-			
-//			pstmt.setDate(3, Date.valueOf(articleVendu.getDateDebutEncheres()));
-//			pstmt.setDate(3, new java.sql.Date(articleVendu.getDateDebutEncheres().getDate()));
-//			pstmt.setDate(4, new java.sql.Date(articleVendu.getDateFinEncheres().getDate()));
-			//pstmt.setDate(4, Date.valueOf(articleVendu.getDateFinEncheres()));
-//			String debut = dtf.format(articleVendu.getDateDebutEncheres());
-//			pstmt.setDate(3, Date.valueOf(debut));
-//			
-//			String fin = dtf.format(articleVendu.getDateFinEncheres());
-//			pstmt.setDate(4, Date.valueOf(fin));
-			
 			pstmt.setInt(5, articleVendu.getMiseAPrix());
 			pstmt.setInt(6, articleVendu.getPrixVente());
 			System.out.println("######" +articleVendu.getUtilisateur().getNoUtilisateur());

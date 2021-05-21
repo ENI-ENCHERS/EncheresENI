@@ -13,6 +13,32 @@
 	<h1>Detail vente</h1>
 	Affichage du detail de la vente
 	</div>
+	
+	<form action='${pageContext.request.contextPath}/AffichageDetailVente' method="post">
+		<div>
+        <label for="dte">Date enchère :</label>
+        <input type="DATE" id="dte" name="dateDebutEncheres">
+    </div>
+    <div>
+        <label for="mont">Montant encère :</label>
+        <input type="number" id="mont" name="montantEnchere">
+    </div>
+    
+    <div>
+        <label for="desc">Numéro article :</label>
+        <input type="enumber" id="desc" name="idArticle">
+    </div>
+    
+     <div>
+        <label for="util">Numéro utilisateur :</label>
+        <input type="number" id="util" name="idUtilisateur">
+    </div>
+    
+    <br>
+        <input type="submit" value="Valider">
+	
+	</form>
+	
 	<%@ include file="/fragments/footer.html"%>
 </body>
 </html>
