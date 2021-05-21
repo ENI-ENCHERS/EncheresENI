@@ -16,10 +16,10 @@
 	
 <!-- SERVLETS -->
 
-	Afficher l'accueil
 	<servlet>
 		<servlet-name>Accueil</servlet-name>
 		<servlet-class>fr.eni.groupe4.encheres.servlets.Accueil</servlet-class>
+		<description>Afficher l'accueil</description>
 	</servlet>
 	
 	<servlet-mapping>
@@ -27,109 +27,96 @@
 		<url-pattern>/accueil</url-pattern>
 	</servlet-mapping>
 	
-	<!-- Afficher les résultats de recherche -->
+	
 	<servlet>
 		<servlet-name>Recherche</servlet-name>
 		<servlet-class>fr.eni.groupe4.encheres.servlets.AffichageRecherche</servlet-class>
+		<description>Affiche les résultats de recherche</description>
 	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>Recherche</servlet-name>
-		<url-pattern>
-		/encheres/recherche.jsp
-		</url-pattern>
+		<url-pattern>/encheres/recherche.jsp</url-pattern>
 	</servlet-mapping>
 
-	<!-- Afficher la page d'inscription -->
+	<description>Afficher la page d'inscription</description>
 	<servlet>
 		<servlet-name>Inscription</servlet-name>
 		<servlet-class>fr.eni.groupe4.encheres.servlets.Inscription</servlet-class>
+		<description>Affiche la page d'inscription</description>
 	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>Inscription</servlet-name>
-		<url-pattern>
-		/encheres/inscription.jsp
-		</url-pattern>
+		<url-pattern>/encheres/inscription.jsp</url-pattern>
 	</servlet-mapping>
 
-	<!-- Afficher la page de connexion -->
+	
 	<servlet>
 		<servlet-name>Connexion</servlet-name>
 		<servlet-class>fr.eni.groupe4.encheres.servlets.GestionConnexion</servlet-class>
+		<description>Affiche la page de connexion</description>
 	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>Connexion</servlet-name>
-		<url-pattern>
-		/encheres/connexion.jsp
-		</url-pattern>
+		<url-pattern>/encheres/connexion.jsp</url-pattern>
 	</servlet-mapping>
 
-	<!-- Page d'oubli de mot de passe -->
 	<servlet>
 		<servlet-name>OubliMotDePasse</servlet-name>
 		<servlet-class>fr.eni.groupe4.encheres.servlets.OubliMotDePasse</servlet-class>
+		<description>Page d'oubli de mot de passe</description>
 	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>OubliMotDePasse</servlet-name>
-		<url-pattern>
-		/encheres/oublimotdepasse.jsp
-		</url-pattern>
+		<url-pattern>/encheres/oublimotdepasse.jsp</url-pattern>
 	</servlet-mapping>
 
-	<!-- Afficher un profil -->
 	<servlet>
 		<servlet-name>Profil</servlet-name>
 		<servlet-class>fr.eni.groupe4.encheres.servlets.AffichageProfil</servlet-class>
+		<description>Affiche un profil</description>
 	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>Profil</servlet-name>
-		<url-pattern>
-		/encheres/profil.jsp
-		</url-pattern>
+		<url-pattern>/encheres/profil.jsp</url-pattern>
 	</servlet-mapping>
 
-	<!-- Modifier son profil -->
+	
 	<servlet>
 		<servlet-name>ModifProfil</servlet-name>
-		<servlet-class>fr.eni.groupe4.encheres.servlets.GestionModificationProfil
-		</servlet-class>
+		<servlet-class>fr.eni.groupe4.encheres.servlets.GestionModificationProfil</servlet-class>
+		<description>Modifier son profil</description>
 	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>ModifProfil</servlet-name>
-		<url-pattern>
-		/encheres/modifprofil.jsp
-		</url-pattern>
+		<url-pattern>/encheres/modifprofil.jsp</url-pattern>
 	</servlet-mapping>
 
-	<!-- Ajouter un article en vente -->
 	<servlet>
 		<servlet-name>NouvelleVente</servlet-name>
 		<servlet-class>fr.eni.groupe4.encheres.servlets.GestionNouvelleVente</servlet-class>
+		<description>Ajoute un article en vente</description>
 	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>NouvelleVente</servlet-name>
-		<url-pattern>
-		/encheres/nouvellevente.jsp
-		</url-pattern>
+		<url-pattern>/encheres/nouvellevente.jsp</url-pattern>
 	</servlet-mapping>
 
-	<!-- Afficher le detail d'une vente -->
 	<servlet>
 		<servlet-name>DetailVente</servlet-name>
 		<servlet-class>fr.eni.groupe4.encheres.servlets.AffichageDetailVente</servlet-class>
+		<description>Affiche le detail d'une vente</description>
 	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>DetailVente</servlet-name>
-		<url-pattern>
-		/encheres/detailvente.jsp
-		</url-pattern>
+		<url-pattern>/encheres/detailvente.jsp</url-pattern>
 	</servlet-mapping>
 
 </web-app>
